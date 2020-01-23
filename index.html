@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Document</title>
@@ -42,42 +43,64 @@
         </li>
     </ul>
     <div class="content bg">
-        <div class="row">
-            <div class="col s12">
-                <div class="card card-bg">
-                    <span class="card-title">Data Members</span>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Item Name</th>
-                                <th>Item Price</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Alvin</td>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                            </tr>
-                            <tr>
-                                <td>Alan</td>
-                                <td>Jellybean</td>
-                                <td>$3.76</td>
-                            </tr>
-                            <tr>
-                                <td>Jonathan</td>
-                                <td>Lollipop</td>
-                                <td>$7.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="container">
+            <div class="row">
+                <div class="col s3">
+                    <div class="card center card-bg">
+                        <div class="card-content">
+                            <p>Revenue</p>
+                            <h5>150 000 €</h5>
+                            <i class="material-icons small green-text">keyboard_arrow_up</i>
+                            <p class="green-text">12%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="card card-bg">
+                        <div class="card-content">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="card card-bg">
+                        <div class="card-content">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script type="text/javascript">
+        var chrt = document.getElementById("myChart").getContext("2d");
+        var chrt2 = document.getElementById("myChart2").getContext("2d");
+        var myChart = new Chart(chrt, {
+            type: 'bar',
+            data: {
+                labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août'],
+                datasets: [{
+                    label: 'DataVisitors',
+                    data: [1009, 1010, 1200, 1000, 1050, 1060, 1010, 1070],
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderColor: '#000',
+                    borderWidth: 1,
+                }]
+            },
+            options: {}
+        });
+        let myChart2 = new Chart(chrt2, {
+            type: 'line',
+            data: {
+                labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'],
+                datasets: [{
+                    label: 'DataUsers Weekly',
+                    data: [50, 57, 60, 52, 55],
+                }]
+            },
+            options: {}
+        });
+    </script>
 </body>
 
 </html>
